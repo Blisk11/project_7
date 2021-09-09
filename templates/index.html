@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+</head>
+<body>
+    <h1>Model Deployment </h1>
+    <p>
+        Enter a valid customer ID
+    </p>
+    <form action= '/' method= 'POST'>
+        <input type ="number" name = "customer_id" placeholder="customer_id">
+        <input type = "submit">
+    </form>
+    {% if cust_probability %}
+        <p> Your predicted score is:</p> {{cust_probability}}
+    {%endif%}
+
+</body>
+</html>
