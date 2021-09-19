@@ -11,20 +11,36 @@ from lightgbm import LGBMClassifier
 from sklearn import metrics
 from random import sample
 
-data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\projet 7\pickled/'
+data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\data/'
 
-def import_df_and_model():
-    # import df and model
-    data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\projet 7\pickled/'
+
+
+def import_model():
+    # model
+    data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\data/'
     model = joblib.load(data_directory + 'lgb.pkl')
-    train_df = pd.read_pickle(data_directory + "train_df.pkl")
-    test_df = pd.read_pickle((data_directory + "test_df.pkl"))
 
-    return model, train_df, test_df
+    return model
+
+def import_train_df():
+    # model
+    data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\data/'
+    train_df = pd.read_json('train_df_light.json.gz', orient = 'index')
+
+    return train_df
+
+def import_test_df():
+    # model
+    data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\projet 7\pickled/'
+    test_df = pd.read_json('test_df_light.json.gz', orient = 'index')
+
+    return  test_df    
 
 def predict_single_proba (id_customer):
-    model, train_df, test_df = import_df_and_model()
-    
+    model = import_model()
+    train_df = import_train_df()
+    test_df = import_test_df
+        
     proba = model.predict_proba(test_df.drop(columns = ['TARGET',]).loc[[int(id_customer)]], num_iteration = model.best_iteration_)[0][0]
     
     return proba

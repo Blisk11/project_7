@@ -12,7 +12,7 @@
         Enter a valid customer ID
     </p>
     <form action= '/' method= 'POST'>
-        <input type ="number" name = "customer_id" placeholder="customer_id">
+        <input type ="text" name = "customer_id" placeholder="customer_id", autocomplete="name">
         <input type = "submit">
     </form>
     {% if cust_probability %}
