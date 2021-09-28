@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+  <meta charset="UTF-8">
+  <title>Credit Default App</title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<title>Project 7: Deploy a machine learning model online </title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<style>
+  h1 {
+    color: #292929;
+  }
+
+  h3 {
+    color: #292929
+  }
+
+  ul {
+    color: #292929
+  }
+
+  h4 {
+    color: #292929
+  }
+
+  h5 {
+    color: #292929
+  }
+
+  p {
+    color: #292929;
+    
+  }
+</style>
+
+<h1>Project 7: Deploy a machine learning model online </h1>
+
+<h3>The dataset is from this <a href="https://www.kaggle.com/c/home-credit-default-risk">
+   <img src="https://zeeshanusmani.com/wp-content/uploads/2019/10/Kaggle3.png" alt='kaggle picture' widht="105px" height="35px"> ,</a> competition  </h3>
+
+<h4>The web app is a simulation of what a customer representitive would have available when meeting with a customer</h4>
+
+<h4>To optimize this model, please choose the following 2 parameters:</h4>
+<ul>
+  <li> The average ammount of credit reimburse before default (as a percentage of the total loan)</li>
+  <li>The expected profit of your customer, as a percentage of their credit. (interest rate + insurance etc.) </li>
+</ul>
+
+<p> By modifying these two parameters, we can optimise the threshold of acceptance of the model to maximise profits on the validation dataset.</p>
+
+
+</body>
+{% endblock content %}

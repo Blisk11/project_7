@@ -18,21 +18,21 @@ data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\da
 def import_model():
     # model
     data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\data/'
-    model = joblib.load(data_directory + 'lgb.pkl')
+    model = joblib.load(data_directory + 'light_lgb.pkl')
 
     return model
 
 def import_train_df():
     # model
     data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\data/'
-    train_df = pd.read_json('train_df_light.json.gz', orient = 'index')
+    train_df = pd.read_json(data_directory +'train_df_light.json.gz', orient = 'index')
 
     return train_df
 
 def import_test_df():
     # model
-    data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\projet 7\pickled/'
-    test_df = pd.read_json('test_df_light.json.gz', orient = 'index')
+    data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\data/'
+    test_df = pd.read_json(data_directory +'test_df_light.json.gz', orient = 'index')
 
     return  test_df    
 
