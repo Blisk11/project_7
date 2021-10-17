@@ -12,28 +12,28 @@ import shap
 import streamlit.components.v1 as components
 
 
-def import_model(data_directory):
+def import_model():
     # model
-    #data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\simplified_app\data/'
-    model = joblib.load(data_directory + 'lgb_light.pkl')
+    #data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\app\data/'
+    model = joblib.load('data/lgb_light.pkl')
 
     return model
 
-def import_train_df(data_directory):
+def import_train_df():
     #data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\simplified_app\data/'
-    train_df = pd.read_json(data_directory +'train_df_light.json.gz', orient = 'index')
+    train_df = pd.read_json('data/train_df_light.json.gz', orient = 'index')
 
     return train_df
 
-def import_test_df(data_directory):
+def import_test_df():
     #data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\simplified_app\data/'
-    test_df = pd.read_json(data_directory +'test_df_light.json.gz', orient = 'index')
+    test_df = pd.read_json('data/test_df_light.json.gz', orient = 'index')
 
     return  test_df 
 
-def import_feature_information_df(data_directory):
+def import_feature_information_df():
      #  data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\simplified_app\data/'
-    feature_information_df = pd.read_json(data_directory +'featured_explained.json.gz', orient = 'index')
+    feature_information_df = pd.read_json('data/featured_explained.json.gz', orient = 'index')
     feature_information_df.columns = feature_information_df.columns.str.replace('Table', 'Data Source')
 
     return  feature_information_df

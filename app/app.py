@@ -14,11 +14,11 @@ import numpy as np
 # streamlit options
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.set_page_config(page_title='Credit Default App', layout = 'wide', initial_sidebar_state = 'auto')
-data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\simplified_app\data/'
+#data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\simplified_app\data/'
 # import df and model
-model = predict.import_model(data_directory)
-test_df = predict.import_test_df(data_directory)
-train_df = predict.import_train_df(data_directory)
+model = predict.import_model()
+test_df = predict.import_test_df()
+train_df = predict.import_train_df()
 model_features_with_target = model.feature_name_
 model_features_with_target.append('TARGET')
 suggested_initial_cut_off_test = predict.initial_cut_off_suggestion(test_df[model_features_with_target] , model)
@@ -282,5 +282,5 @@ if page == 'Model inputs for cut off explained':
         "* ** We compute the results based on the formula stated above or even better we use actual returns and cost \n ** " 
         "* ** We then find the optimal cut off point which will use when running the model on new applicants! ** \n"
               )
-        st.write('You can read a more thorough explanation with this [link!][A detailed report of the project](https://www.dropbox.com/s/vv9x4t8dn2czp0w/Project%207%20Report.pdf?dl=0)  :notebook: ')
+        st.markdown(' ##### You can read a more thorough explanation with this [link](https://www.dropbox.com/s/vv9x4t8dn2czp0w/Project%207%20Report.pdf?dl=0)!  :notebook: ')
 
