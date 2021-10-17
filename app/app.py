@@ -47,10 +47,8 @@ if page == 'Project Brief':
     st.markdown(" #### ** The main goals of the project are: ** \n"
     "* Deploy a machine learning model online that will predict the probability of a customer defaulting on their loan \n"
     "* Create a dashboard for the banks relationship managers, in order to interpret the model \n" 
-    "* A detailed report of the project  " )
-    #!! you can download [here](https:// DROP BOX)
-  
-    # !! need to insert the pdf link to my drop box
+    "* [A detailed report of the project](https://www.dropbox.com/s/vv9x4t8dn2czp0w/Project%207%20Report.pdf?dl=0) " )
+
 
     #st.subheader("Table of content")
     st.markdown(""" #### **Table of content**  
@@ -284,5 +282,5 @@ if page == 'Model inputs for cut off explained':
         "* ** We compute the results based on the formula stated above or even better we use actual returns and cost \n ** " 
         "* ** We then find the optimal cut off point which will use when running the model on new applicants! ** \n"
               )
-        st.write('You can read a more thorough explanation with this link!  :notebook: ')
-        # !! insert PDF download
+        st.write('You can read a more thorough explanation with this [link!][A detailed report of the project](https://www.dropbox.com/s/vv9x4t8dn2czp0w/Project%207%20Report.pdf?dl=0)  :notebook: ')
+
