@@ -266,7 +266,7 @@ if page == 'Model inputs for cut off explained':
         
 
         st.markdown("* ** The X axis is the custom cut off point, a customer needs to be below the cut-off to receive a loan ** \n"
-        "* ** The Y axis is the total returns divide by the number of customer, to calculate this we look at the * outcome * of the cut off point: ** \n"
+        "* ** The Y axis is the total returns divide by the number of customer, to calculate this we look at the * outcome * of the cut off point:**\n"
         "\n" 
         "* ** Bad loans that receive a credit = loss calculated **\n" 
         "* ** Bad loans that are denied a credit = 0 **\n" 
