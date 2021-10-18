@@ -59,7 +59,8 @@ if page == 'Project Brief':
 
     
     
-    st.markdown(" The data was provided by [Home Credit Group](https://www.homecredit.net/about-us.aspx) they operate mostly in Asia. \
+    st.markdown(" All the charts and data in this website is dynamic and calculated with a sample of the original datasets, I apologise for the delays in loading.\
+    The data was provided by [Home Credit Group](https://www.homecredit.net/about-us.aspx) they operate mostly in Asia. \
         Our training dataset is mostly [Cash loans](https://www.homecredit.net/about-us/our-products.aspx). ")
     st.write("")
 
