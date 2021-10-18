@@ -251,7 +251,7 @@ if page == 'Model inputs for cut off explained':
         predict.print_confusion_matrix(test_df[model_features_with_target], model, suggested_initial_cut_off_test, 'Initial model cut off confusion matrix', r2_three_col2 )
         
         st.markdown(" #### ** Our goal is to maximise profits! :dollar: :moneybag: :dollar: **\
-         The optimal binary classification matrix is the one that will generate the most money on our validation data! ")
+         The optimal threshold is the one that makes our company the most profits! Regardless of how many loans we accept or deny.")
 
         st.markdown(" ##### Let's instead look at ** average revenue per customer ** based on your selection compared to the suggested cut-off.")
         st.markdown(' ** Change the settings in the side bar to see how the graph changes based on the inputs! **')
