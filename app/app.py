@@ -11,8 +11,6 @@ import numpy as np
 
 
 # streamlit options
-[theme]
-base="light"
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.set_page_config(page_title='Credit Default App', layout = 'wide', initial_sidebar_state = 'auto')
 
