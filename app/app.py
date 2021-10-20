@@ -11,8 +11,11 @@ import numpy as np
 
 
 # streamlit options
+[theme]
+base="light"
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.set_page_config(page_title='Credit Default App', layout = 'wide', initial_sidebar_state = 'auto')
+
 #data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\simplified_app\data/'
 # import df and model
 model = predict.import_model()
@@ -67,7 +70,7 @@ if page == 'Project Brief':
     st.markdown(  
     """ We do not know if the data is from one country or multiple, so we don't know if the currency value is homogenous throughout the dataset. A reverse google image
         search of the picture in the KAGGLE competition, seems to indicate it's from their Vietnamese branch. If the entire dataset is in * Vietnamese dong *, 
-        then the maximum loan of our dataset is about 23 USD$. Most of the information on the loan purpose were missing, but when they were indicated they were mostly for
+        then the maximum loan of our dataset is about 23 USD$. Most of the information on the loans purposes were missing, but when they were indicated they were mostly for
         consumer goods. Most common: Mobile phones, electronics, computers, furniture. ** The data with previous loans information seems to indicate the average return per credit is ~45%. **
                    
        """) 
@@ -154,7 +157,7 @@ if page == 'Customer Dashboard':
         st.write('***')
         st.subheader('Additional customer information')
 
-        st.write("Let's have a look at how the model scored the most impactful features")
+        st.write("Let's have a look at how the model scored the most impactful features. Each row is a column of our dataset.")
         plt.title('Model decision process')
 
         # make the shap plot smaller
@@ -190,7 +193,7 @@ if page == 'Customer Dashboard':
         feature_deep_dive_list = st.multiselect('Select features to see their descriptions', percentile_df.index)
         for feature in feature_deep_dive_list:
             st.write(feature)
-            st.write(feature_information_df[feature_information_df['col_name']== feature]['Description'])
+            st.write(feature_information_df[feature_information_df['col_name']== feature]['Description'].values[0])
             st.write()
 
 
@@ -278,7 +281,7 @@ if page == 'Model inputs for cut off explained':
         st.markdown("* #### ** So to recap ** \n"
         "* ** We train our model with the standard *auc * metric ** \n"
         "* ** Then on our validation dataset, we run a simulation on different cut off points  ** \n" 
-        "* ** We compute the results based on the formula stated above or even better we use actual returns and cost \n ** " 
+        "* ** We compute the results based on the formula stated above or even better we use actual returns and cost ** \n " 
         "* ** We then find the optimal cut off point which will use when running the model on new applicants! ** \n"
               )
         st.markdown(' ##### You can read a more thorough explanation with this [link](https://www.dropbox.com/s/vv9x4t8dn2czp0w/Project%207%20Report.pdf?dl=0)!  :notebook: ')
