@@ -259,14 +259,7 @@ if page == 'Model inputs for cut off explained':
         # required variables
         # Get the updated optimal cutoff on the validation dataset
     else:
-        st.markdown(' #### ** Choose different variable and see how it affects the confusion matrix on the left. Compare with the right matrix with the Optimal [Geometric Mean]\
-        (https://machinelearningmastery.com/threshold-moving-for-imbalanced-classification/#:~:text=There%20are%20many%20ways,for%20each%20threshold%20directly.) **')
-        
-        test_opt_perc, test_plot_dic = predict.find_optimal_proba (test_df[model_features_with_target], model, suggested_initial_cut_off_test, perc_reimbursed, perc_profit)
-        train_opt_perc, train_plot_dic = predict.find_optimal_proba (train_df[model_features_with_target], model, suggested_initial_cut_off_train, perc_reimbursed, perc_profit)
-        r2_three_col1, r2_three_col2 = st.columns(2)
-        predict.print_confusion_matrix(test_df[model_features_with_target], model, test_opt_perc, 'Custom cut off based on your inputs', r2_three_col1 )
-        predict.print_confusion_matrix(test_df[model_features_with_target], model, suggested_initial_cut_off_test, 'Initial model cut off confusion matrix', r2_three_col2 )
+
         
         st.markdown(" #### ** Our goal is to maximise profits! :dollar: :moneybag: :dollar: **\
          The optimal threshold is the one that makes our company the most profits! Regardless of how many loans we accept or deny.")
@@ -291,7 +284,15 @@ if page == 'Model inputs for cut off explained':
         "* ** Good loans that are denied = 0 **\n"     
         "* ** Then we take the sum of all outcomes and divide it by the number of applicants to get our average revenue per customer** \n"      
         )
-
+        st.markdown(' #### ** Choose different variables in the side bar to see how the optimal threshold changes in the graph above and how that translate to the confusion matrix on the left. \
+        Compare with the right matrix which is calculated using the [Geometric Mean]\
+        (https://machinelearningmastery.com/threshold-moving-for-imbalanced-classification/#:~:text=There%20are%20many%20ways,for%20each%20threshold%20directly.) as the cut off. **')
+        
+        test_opt_perc, test_plot_dic = predict.find_optimal_proba (test_df[model_features_with_target], model, suggested_initial_cut_off_test, perc_reimbursed, perc_profit)
+        train_opt_perc, train_plot_dic = predict.find_optimal_proba (train_df[model_features_with_target], model, suggested_initial_cut_off_train, perc_reimbursed, perc_profit)
+        r2_three_col1, r2_three_col2 = st.columns(2)
+        predict.print_confusion_matrix(test_df[model_features_with_target], model, test_opt_perc, 'Custom cut off based on your inputs', r2_three_col1 )
+        predict.print_confusion_matrix(test_df[model_features_with_target], model, suggested_initial_cut_off_test, 'Initial model cut off confusion matrix', r2_three_col2 )
         st.markdown("* #### ** So to recap ** \n"
         "* ** We train our model with the standard *auc * metric ** \n"
         "* ** Then on our validation dataset, we run a simulation on different cut off points  ** \n" 
