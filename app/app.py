@@ -250,7 +250,7 @@ if page == 'Model inputs for cut off explained':
     The first variable: * Average percentage of the loan reimbursed before default* would be calculated by taking the historical data and calculating the 
     cost associated with defaulting customers as a percentage of their initial loan. A rough estimate is fine here, the idea being that people don't default on their first loan payment.  
     The second variable: * Expected Return, as a percentage of the loan (interest rate) * would simply be the loan annuities multiplied the number of payments that is scheduled at the 
-    start of the credit. Theses variables, combined with our models probability and the real labels (did or did not default), let's us calculated the outcome that each threshold has on our 
+    start of the credit. Theses variables, combined with our models probability and the true labels (repaid defaulted), let's us calculated the outcome that each threshold has on our 
     matrix above. Let's have a look!
     ''') 
 
