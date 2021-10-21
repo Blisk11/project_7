@@ -60,15 +60,14 @@ if page == 'Project Brief':
 
     
     
-    st.markdown(" All the charts and data in this website is dynamic and calculated with a sample of the original datasets, I apologise for the delays in loading.\
-    The data was provided by [Home Credit Group](https://www.homecredit.net/about-us.aspx) they operate mostly in Asia. \
+    st.markdown(" The data for the kaggle competition was provided by [Home Credit Group](https://www.homecredit.net/about-us.aspx) they operate mostly in Asia. \
         Our training dataset is mostly [Cash loans](https://www.homecredit.net/about-us/our-products.aspx). ")
     st.write("")
 
     st.markdown(  
     """ We do not know if the data is from one country or multiple, so we don't know if the currency value is homogenous throughout the dataset. A reverse google image
         search of the picture in the KAGGLE competition, seems to indicate it's from their Vietnamese branch. If the entire dataset is in * Vietnamese dong *, 
-        then the maximum loan of our dataset is about 23 USD$. Most of the information on the loans purposes were missing, but when they were indicated they were mostly for
+        then the maximum loan of our dataset is approximately 23 USD$. Most of the information on the loans purposes were missing, but when they were indicated they were mostly for
         consumer goods. Most common: Mobile phones, electronics, computers, furniture. ** The data with previous loans information seems to indicate the average return per credit is ~45%. **
                    
        """) 
@@ -80,9 +79,9 @@ if page == 'Customer Dashboard':
     st.sidebar.write('***')
     st.sidebar.title('Required inputs')
     #side bar inputs
-    perc_reimbursed = st.sidebar.slider(label="Average return before default (what percentage of the initial credit was repaid)", 
+    perc_reimbursed = st.sidebar.slider(label="Average percentage of the loan reimbursed before default", 
     min_value = 0.05, max_value = .90, value = .65, step=.05,format="%.2f")
-    perc_profit = st.sidebar.slider(label='Expected Return, as a percentage of the loan (interest rate)' , 
+    perc_profit = st.sidebar.slider(label='Expected return, as a percentage of the loan (interest rate)' , 
     min_value = 0.01, max_value = 0.65, value = .15, step=.01,format="%.2f")
 
     customer_id = st.sidebar.selectbox("Please select a Customer ID", test_df.index.sort_values().to_list(), index = 4966)
@@ -109,9 +108,9 @@ if page == 'Customer Dashboard':
 
         st.header('You can change the information in the side bar')
         st.markdown(""" 
-        * **Average return before default: ** For the group information above, what is the average percentage of the credit that is reimbursed before default? 
+        * ** Average percentage of the loan reimbursed before default: ** For the group information above, what is the average percentage of the credit that is reimbursed before default? 
+        * ** Expected return, as a percentage of the loan (interest rate): ** The total payments (interest, insurance, fees) divided by the loan.
         * ** Please select a Customer ID: ** The customer ID you wish to evaluate.
-        * **Expected Return, as a percentage of the loan: ** The total payments (interest, insurance, fees) divided by the loan.
         """)
         st.subheader('Please confirm your selection in the side bar')
     else:
@@ -191,7 +190,7 @@ if page == 'Customer Dashboard':
         feature_deep_dive_list = st.multiselect('Select features to see their descriptions', percentile_df.index)
         for feature in feature_deep_dive_list:
             st.write(feature)
-            st.write(feature_information_df[feature_information_df['col_name']== feature]['Description'].values[0])
+            st.write(feature_information_df[feature_information_df['col_name']== feature]['Description'].values[0], '\n')
             st.write()
 
 
@@ -200,7 +199,7 @@ if page == 'Model inputs for cut off explained':
     st.sidebar.write('***')
     st.sidebar.title('Required inputs')
     #side bar inputs
-    perc_reimbursed = st.sidebar.slider(label="Average return before default (what percentage of the initial credit was repaid)", min_value = 0.05, max_value = .90, value = .65, step=.05,format="%.2f")
+    perc_reimbursed = st.sidebar.slider(label="Average percentage of the loan reimbursed before default", min_value = 0.05, max_value = .90, value = .65, step=.05,format="%.2f")
     perc_profit = st.sidebar.slider(label='Expected Return, as a percentage of the loan (interest rate)' , 
     min_value = 0.01, max_value = 0.65, value = .15, step=.01,format="%.2f")
     information_ok_dashboard = st.empty()
@@ -226,16 +225,24 @@ if page == 'Model inputs for cut off explained':
     
     st.markdown('''
     Our model outputs a probability between 0 and 1. Closer it is to 0, the more our model is confident a customer will repay their loan. The ROC curve is 
-    useful to understand the trade-off in the true-positive rate and false-positive rate for different thresholds. The threshold here is a which probability % of
-    our model will we decide to award or deny a credit. Now we could simply define the threshold of acceptance at 0.50, but there are more sophisticated techniques.
-    For example, the * Validation threshold suggestion * above was calculated using the [Geometric mean]
-    (https://machinelearningmastery.com/threshold-moving-for-imbalanced-classification/#:~:text=There%20are%20many%20ways,for%20each%20threshold%20directly.).   
-      
-    But for this perticular problem, we can optimise the cutoff threshold to ** maximise profits **. Since the profits/ cost of our 0 and 1 should be available.
-    Unfortunately, we did not have access to these variables in the labeled dataset of the competition, hence why I added the inputs which are then passed on to 
-    each previous loan. It is a bit unfair since theses variables would have a significant effect on the target variable. Nevertheless, since we seperated the dataset
-    into categories based on the amount of credit requested, and that these credits are for consumer products, the interest range should be fairly small. 
-    Choose some variables in the side bar and we will visualize how the effect they have on our optimal threshold.
+    useful to understand the trade-off in the true-positive rate and false-positive rate for different thresholds. The threshold is a which probability % 
+    our model will we decide to award or deny a credit. We could simply define the threshold of acceptance at 0.50, or used more sophisticated techniques like the 
+    [Geometric mean](https://machinelearningmastery.com/threshold-moving-for-imbalanced-classification/#:~:text=There%20are%20many%20ways,for%20each%20threshold%20directly.) 
+    which was used to calculate the * Validation threshold suggestion * above.   
+
+    For this perticular problem though, we can optimise the cutoff threshold to ** maximise profits ** by calculating the outcome of each threshold on our matrix below. 
+    ''') 
+
+    img = Image.open("documents/matrix.png", )
+    st.image(img, width=500)
+    st.markdown('''
+    Unfortunately, we did not have access to these variables in the labeled dataset of the competition, hence why I added the inputs which are then passed on to historical data.
+    This is meant to be a demonstration of what could realistically be done with if I was a bank employee as the school project stated. ideally we would calculate the two inputs.  
+    The first variable: * Average percentage of the loan reimbursed before default* would be calculated by taking the historical data and calculating the 
+    cost associated with defaulting customers as a percentage of their initial loan. A rough estimate is fine here, the idea being that people don't default on their first loan payment.  
+    The second variable: * Expected Return, as a percentage of the loan (interest rate) * would simply be the loan annuities multiplied the number of payments that is scheduled at the 
+    start of the credit. Theses variables, combined with our models probability and the real labels (did or did not default), let's us calculated the outcome that each threshold has on our 
+    matrix above. Let's have a look!
     ''') 
 
     if information_ok_dashboard != True:
@@ -255,7 +262,7 @@ if page == 'Model inputs for cut off explained':
         st.markdown(" #### ** Our goal is to maximise profits! :dollar: :moneybag: :dollar: **\
          The optimal threshold is the one that makes our company the most profits! Regardless of how many loans we accept or deny.")
 
-        st.markdown(" ##### Let's instead look at ** average revenue per customer ** based on your selection compared to the suggested cut-off.")
+        st.markdown(" ##### Let's instead look at ** the average revenue per customer ** based on your selection compared to the suggested geometric mean cutoff.")
         st.markdown(' ** Change the settings in the side bar to see how the graph changes based on the inputs! **')
         st.write('Average credit: ', int(test_df.AMT_CREDIT.mean()))
         st.write('Suggested cut off: ', suggested_initial_cut_off_test.round(4))
