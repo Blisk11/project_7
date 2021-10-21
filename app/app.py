@@ -293,7 +293,7 @@ if page == 'Model inputs for cut off explained':
         r2_three_col1, r2_three_col2 = st.columns(2)
         predict.print_confusion_matrix(test_df[model_features_with_target], model, test_opt_perc, 'Custom cut off based on your inputs', r2_three_col1 )
         predict.print_confusion_matrix(test_df[model_features_with_target], model, suggested_initial_cut_off_test, 'Initial model cut off confusion matrix', r2_three_col2 )
-        st.markdown("* #### ** So to recap ** \n"
+        st.markdown("### ** So to recap: ** \n"
         "* ** We train our model with the standard *auc * metric ** \n"
         "* ** Then on our validation dataset, we run a simulation on different cut off points  ** \n" 
         "* ** We compute the results based on the formula stated above or even better we use actual returns and cost ** \n " 
