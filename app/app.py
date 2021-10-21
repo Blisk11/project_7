@@ -14,6 +14,15 @@ import numpy as np
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.set_page_config(page_title='Credit Default App', layout = 'wide', initial_sidebar_state = 'auto')
 
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
+
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+
 #data_directory = r'C:\Users\juvaugha\Documents\PYTHON\OPCR PROJECTS\Project_7\simplified_app\data/'
 # import df and model
 model = predict.import_model()
