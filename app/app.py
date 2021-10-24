@@ -249,11 +249,12 @@ if page == 'Model overview':
     st.image(img, width=500)
     st.markdown('''
     Unfortunately, we did not have access to these variables in the labeled dataset of the competition, hence why I added the inputs which are then passed on to historical data.
-    This is meant to be a demonstration of what could realistically be done with if I was a bank employee, as the school project stated. ideally we would calculate the two inputs.  
-    The first variable: ** Average percentage of the loan reimbursed before default ** would be calculated by taking the historical data and calculating the 
-    cost associated with defaulting customers as a percentage of their initial loan. A rough estimate is fine here, the idea being that people don't default on their first loan payment.  
-    The second variable: ** Expected Return, as a percentage of the loan (interest rate) ** would simply be the loan annuities multiplied the number of payments that is scheduled at the 
-    start of the credit. Theses variables, combined with our models probability and the true labels (repaid or defaulted), let's us calculated the outcome that each threshold has on our 
+    This is meant to be a demonstration, the two variables requested should not be used to train the model to avoid [data leaking](https://machinelearningmastery.com/data-leakage-machine-learning/) 
+    but can be used in the validation dataset. To calculate: 
+    ** Average percentage of the loan reimbursed before default ** we use historical data and estimate the cost associated with defaulting customers as a percentage of their initial loan. 
+    A rough estimate is fine here, the idea being that people don't default on their first loan payment.  
+    ** Expected Return, as a percentage of the loan (interest rate) ** would simply be the loan annuities multiplied the number of payments that is scheduled at the 
+    start of the credit. Theses variables, combined with our models probability and the true labels (repaid or defaulted), let's us calculate the outcome that each threshold has on our 
     matrix above. Let's have a look!
     ''') 
 
