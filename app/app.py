@@ -239,18 +239,21 @@ if page == 'Model overview':
     [Geometric mean](https://machinelearningmastery.com/threshold-moving-for-imbalanced-classification/#:~:text=There%20are%20many%20ways,for%20each%20threshold%20directly.) 
     which was used to calculate the * Validation threshold suggestion * above.   
 
-    For this perticular problem though, we can optimise the cutoff threshold to ** maximise profits ** by calculating the outcome of each threshold on our matrix below. 
+    For this perticular problem though, we can optimise the cutoff threshold to ** maximise profits ** by calculating the outcome of each threshold on our matrix below.  
+    True: when the model prediction is correct.  
+    False: when the model prediction is incorrect. 
+    Repaid/ Defaulted: the actual outcome in the historical data.
     ''') 
 
     img = Image.open("documents/matrix.png", )
     st.image(img, width=500)
     st.markdown('''
     Unfortunately, we did not have access to these variables in the labeled dataset of the competition, hence why I added the inputs which are then passed on to historical data.
-    This is meant to be a demonstration of what could realistically be done with if I was a bank employee as the school project stated. ideally we would calculate the two inputs.  
-    The first variable: * Average percentage of the loan reimbursed before default* would be calculated by taking the historical data and calculating the 
+    This is meant to be a demonstration of what could realistically be done with if I was a bank employee, as the school project stated. ideally we would calculate the two inputs.  
+    The first variable: ** Average percentage of the loan reimbursed before default ** would be calculated by taking the historical data and calculating the 
     cost associated with defaulting customers as a percentage of their initial loan. A rough estimate is fine here, the idea being that people don't default on their first loan payment.  
-    The second variable: * Expected Return, as a percentage of the loan (interest rate) * would simply be the loan annuities multiplied the number of payments that is scheduled at the 
-    start of the credit. Theses variables, combined with our models probability and the true labels (repaid defaulted), let's us calculated the outcome that each threshold has on our 
+    The second variable: ** Expected Return, as a percentage of the loan (interest rate) ** would simply be the loan annuities multiplied the number of payments that is scheduled at the 
+    start of the credit. Theses variables, combined with our models probability and the true labels (repaid or defaulted), let's us calculated the outcome that each threshold has on our 
     matrix above. Let's have a look!
     ''') 
 
