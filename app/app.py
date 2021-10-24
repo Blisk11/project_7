@@ -41,7 +41,7 @@ st.sidebar.image(image, width= 200, )
 
 #Master side bar
 st.sidebar.title("Selection Panel")
-page_names = ['Project Brief',  'Model inputs for cut off explained', 'Customer Dashboard']
+page_names = ['Project Brief',  'Model overview', 'Customer Dashboard']
 
 page = st.sidebar.radio('Navigation pages', page_names)
 
@@ -61,7 +61,7 @@ if page == 'Project Brief':
 
     #st.subheader("Table of content")
     st.markdown(""" #### **Table of content**  
-    * **Model Dashboard:** An overview of the model and my custom threshold function to maximise profits  
+    * ** Model overview:** Information on the model evaluation metrics and my custom threshold function to maximise profits  
     * **Customer Dashboard:** A dashboard destined for the bank relationship managers
     """)
     st.write("")
@@ -203,7 +203,7 @@ if page == 'Customer Dashboard':
             st.write()
 
 
-if page == 'Model inputs for cut off explained':
+if page == 'Model overview':
     
     st.sidebar.write('***')
     st.sidebar.title('Required inputs')
