@@ -76,7 +76,7 @@ if page == 'Project Brief':
     st.markdown(  
     """ We do not know if the data is from one country or multiple, so we don't know if the currency value is homogenous throughout the dataset. A reverse google image
         search of the picture in the KAGGLE competition, seems to indicate it's from their Vietnamese branch. If the entire dataset is in * Vietnamese dong *, 
-        then the maximum loan of our dataset is approximately 23 USD$. Most of the information on the loans purposes were missing, but when they were indicated they were mostly for
+        then the maximum loan of our dataset is approximately 23 USD$. Most of the information on the loans purposes is missing, but when they were indicated they were mostly for
         consumer goods. Most common: Mobile phones, electronics, computers, furniture. ** The data with previous loans information seems to indicate the average return per credit is ~45%. **
                    
        """) 
@@ -248,13 +248,13 @@ if page == 'Model overview':
     img = Image.open("documents/matrix.png", )
     st.image(img, width=500)
     st.markdown('''
-    Unfortunately, we did not have access to these variables in the labeled dataset of the competition, hence why I added the inputs which are then passed on to historical data.
+    Unfortunately, we did not have access to these variables in the labeled dataset of the competition, hence I added the inputs which are then passed on to historical data.
     This is meant to be a demonstration, the two variables requested should not be used to train the model to avoid [data leaking](https://machinelearningmastery.com/data-leakage-machine-learning/) 
     but can be used in the validation dataset. To calculate: 
     ** Average percentage of the loan reimbursed before default ** we use historical data and estimate the cost associated with defaulting customers as a percentage of their initial loan. 
     A rough estimate is fine here, the idea being that people don't default on their first loan payment.  
     ** Expected Return, as a percentage of the loan (interest rate) ** would simply be the loan annuities multiplied the number of payments that is scheduled at the 
-    start of the credit. Theses variables, combined with our models probability and the true labels (repaid or defaulted), let's us calculate the outcome that each threshold has on our 
+    start of the credit. Theses variables, combined with our models probability and the true labels (repaid or defaulted), lets us calculate the outcome that each threshold has on our 
     matrix above. Let's have a look!
     ''') 
 
