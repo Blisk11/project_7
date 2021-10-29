@@ -241,7 +241,7 @@ if page == 'Model overview':
 
     For this perticular problem though, we can optimise the cutoff threshold to ** maximise profits ** by calculating the outcome of each threshold on our matrix below.  
     True: when the model prediction is correct.  
-    False: when the model prediction is incorrect. 
+    False: when the model prediction is incorrect.  
     Repaid/ Defaulted: the actual outcome in the historical data.
     ''') 
 
